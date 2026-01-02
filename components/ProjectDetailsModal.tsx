@@ -36,45 +36,51 @@ import {
   BookOpen,
 } from 'lucide-react'
 
-// Mapeamento de ícones para módulos
-const moduleIcons: Record<string, any> = {
-  // Gestão PRO +
-  'Dashboard Executivo': LayoutDashboard,
-  'PDV (Ponto de Venda)': ShoppingCart,
-  'Gerenciador de Caixa': Wallet,
-  'Gestão de Clientes (CRM)': Users,
-  'Controle de Estoque': Package,
-  'Módulo Financeiro': DollarSign,
-  'Recibos e Orçamentos': FileText,
-  'Relatórios Gerenciais': BarChart3,
-  'Lembretes e Tarefas': CheckSquare,
-  'Suporte Integrado': Headphones,
-  'Configurações': Settings,
-  // Escritório Advocacia
-  'Dashboard': LayoutDashboard,
-  'Atendimentos (Sistema de Fila)': ClipboardList,
-  'Clientes': Users,
-  'Processos': Scale,
-  'Contas a Receber': TrendingUp,
-  'Contas a Pagar': TrendingDown,
-  'Comissionado': UserCheck,
-  'Agenda e Tarefas': Calendar,
-  'Contratos': FileText,
-  'Recibos e Orçamentos': Receipt,
-  'Relatórios': BarChart3,
-  'Configurações': Settings,
-  // SeguraBolso
-  'Dashboard Inteligente': LayoutDashboard,
-  'Gestão de Receitas': ArrowUpCircle,
-  'Gestão de Despesas': ArrowDownCircle,
-  'Contas e Cartões': Building2,
-  'Fluxo de Caixa': TrendingUp,
-  'Categorias Personalizadas': Tag,
-  'Agenda Financeira': Calendar,
-  'Relatórios e Análises': PieChart,
-  'Produtividade': BookOpen,
-  'Configurações': Settings,
+// Mapeamento de ícones para módulos - usando função para evitar duplicatas
+const getModuleIcon = (moduleName: string) => {
+  const iconMap: Record<string, any> = {
+    // Gestão PRO +
+    'Dashboard Executivo': LayoutDashboard,
+    'PDV (Ponto de Venda)': ShoppingCart,
+    'Gerenciador de Caixa': Wallet,
+    'Gestão de Clientes (CRM)': Users,
+    'Controle de Estoque': Package,
+    'Módulo Financeiro': DollarSign,
+    'Relatórios Gerenciais': BarChart3,
+    'Lembretes e Tarefas': CheckSquare,
+    'Suporte Integrado': Headphones,
+    // Escritório Advocacia
+    'Dashboard': LayoutDashboard,
+    'Atendimentos (Sistema de Fila)': ClipboardList,
+    'Clientes': Users,
+    'Processos': Scale,
+    'Contas a Receber': TrendingUp,
+    'Contas a Pagar': TrendingDown,
+    'Comissionado': UserCheck,
+    'Agenda e Tarefas': Calendar,
+    'Contratos': FileText,
+    // SeguraBolso
+    'Dashboard Inteligente': LayoutDashboard,
+    'Gestão de Receitas': ArrowUpCircle,
+    'Gestão de Despesas': ArrowDownCircle,
+    'Contas e Cartões': Building2,
+    'Fluxo de Caixa': TrendingUp,
+    'Categorias Personalizadas': Tag,
+    'Agenda Financeira': Calendar,
+    'Relatórios e Análises': PieChart,
+    'Produtividade': BookOpen,
+  }
+
+  // Ícones comuns que aparecem em múltiplos sistemas
+  if (moduleName.toLowerCase().includes('recibos') || moduleName.toLowerCase().includes('orçamentos')) return Receipt
+  if (moduleName.toLowerCase().includes('relatórios')) return BarChart3
+  if (moduleName.toLowerCase().includes('configurações')) return Settings
+
+  return iconMap[moduleName] || Package
 }
+
+// Objeto vazio mantido para compatibilidade
+const moduleIcons: Record<string, any> = {}
 
 interface ProjectDetailsModalProps {
   isVisible: boolean
@@ -157,10 +163,10 @@ export default function ProjectDetailsModal({
                     {project.id === 'gestao-pro-plus'
                       ? 'GESTÃO PRO +'
                       : project.id === 'law-office'
-                      ? 'GESTÃO ESCRITÓRIO ADVOCACIA'
-                      : project.id === 'segurabolso'
-                      ? 'SEGURABOLSO'
-                      : project.id.toUpperCase()}
+                        ? 'GESTÃO ESCRITÓRIO ADVOCACIA'
+                        : project.id === 'segurabolso'
+                          ? 'SEGURABOLSO'
+                          : project.id.toUpperCase()}
                   </h2>
                   <div className="text-matrix-cyan/70 font-mono text-base">
                     {project.id === 'gestao-pro-plus' ? 'SaaS ERP' : 'SaaS DEMO'}
@@ -186,11 +192,10 @@ export default function ProjectDetailsModal({
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`px-6 py-3 font-mono text-sm md:text-base font-semibold transition-all relative ${
-                      activeTab === tab.id
-                        ? 'text-matrix-cyan'
-                        : 'text-matrix-cyan/50 hover:text-matrix-cyan/80'
-                    }`}
+                    className={`px-6 py-3 font-mono text-sm md:text-base font-semibold transition-all relative ${activeTab === tab.id
+                      ? 'text-matrix-cyan'
+                      : 'text-matrix-cyan/50 hover:text-matrix-cyan/80'
+                      }`}
                   >
                     {tab.label}
                     {activeTab === tab.id && (
@@ -228,12 +233,12 @@ export default function ProjectDetailsModal({
                                 {category === 'language'
                                   ? 'Linguagens'
                                   : category === 'framework'
-                                  ? 'Frameworks'
-                                  : category === 'library'
-                                  ? 'Bibliotecas'
-                                  : category === 'tool'
-                                  ? 'Ferramentas'
-                                  : 'Bancos de Dados'}
+                                    ? 'Frameworks'
+                                    : category === 'library'
+                                      ? 'Bibliotecas'
+                                      : category === 'tool'
+                                        ? 'Ferramentas'
+                                        : 'Bancos de Dados'}
                               </div>
                               <div className="flex flex-wrap gap-2">
                                 {techs.map((tech, index) => (
@@ -305,7 +310,7 @@ export default function ProjectDetailsModal({
                       </div>
                       <div className="grid md:grid-cols-2 gap-6">
                         {project.modules.map((module, index) => {
-                          const IconComponent = moduleIcons[module.name] || Package
+                          const IconComponent = getModuleIcon(module.name)
                           return (
                             <motion.div
                               key={index}
@@ -394,9 +399,8 @@ export default function ProjectDetailsModal({
                           {/* Iframe - tentativa de carregar */}
                           <iframe
                             src={project.demoUrl}
-                            className={`w-full h-[600px] border-0 transition-opacity duration-200 ${
-                              iframeLoaded ? 'opacity-100' : 'opacity-0'
-                            }`}
+                            className={`w-full h-[600px] border-0 transition-opacity duration-200 ${iframeLoaded ? 'opacity-100' : 'opacity-0'
+                              }`}
                             title="Preview do Sistema"
                             allow="fullscreen"
                             referrerPolicy="no-referrer-when-downgrade"
@@ -412,7 +416,7 @@ export default function ProjectDetailsModal({
                             }}
                             style={{ display: iframeError ? 'none' : 'block' }}
                           />
-                          
+
                           {/* Loading state */}
                           {!iframeLoaded && !iframeError && (
                             <div className="absolute inset-0 flex items-center justify-center bg-[#0f1f3a]">
