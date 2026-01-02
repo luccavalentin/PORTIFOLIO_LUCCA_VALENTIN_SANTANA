@@ -5,6 +5,7 @@ export interface SystemModule {
   status: 'ONLINE' | 'OFFLINE' | 'MAINTENANCE'
   access: 'PREVIEW' | 'DEMO' | 'RESTRICTED'
   description?: string
+  comingSoon?: boolean
 }
 
 export const systemModules: SystemModule[] = [
@@ -44,33 +45,36 @@ export const systemModules: SystemModule[] = [
     id: 'clinic-odonto',
     name: 'CLINIC_ODONTO',
     type: 'SaaS DEMO',
-    status: 'ONLINE',
-    access: 'PREVIEW',
+    status: 'MAINTENANCE',
+    access: 'RESTRICTED',
     description: 'Sistema de Gestão para Clínicas Odontológicas',
+    comingSoon: true,
   },
   {
-    id: 'clinic-med',
-    name: 'CLINIC_MED',
+    id: 'clinic-psico',
+    name: 'CLINIC_PSICO',
     type: 'SaaS DEMO',
-    status: 'ONLINE',
-    access: 'PREVIEW',
-    description: 'Sistema de Gestão para Clínicas Médicas',
+    status: 'MAINTENANCE',
+    access: 'RESTRICTED',
+    description: 'Sistema de Gestão para Clínicas de Psicologia',
+    comingSoon: true,
   },
   {
     id: 'barber-shop',
     name: 'BARBER_SHOP',
     type: 'SaaS DEMO',
-    status: 'ONLINE',
-    access: 'PREVIEW',
+    status: 'MAINTENANCE',
+    access: 'RESTRICTED',
     description: 'Plataforma de Gestão para Barbearias',
+    comingSoon: true,
   },
   {
-    id: 'task-manager',
-    name: 'TASK_MANAGER',
+    id: 'portfolio-imobiliario',
+    name: 'PORTFÓLIO IMOBILIÁRIO',
     type: 'SaaS DEMO',
-    status: 'ONLINE',
-    access: 'PREVIEW',
-    description: 'Sistema Avançado de Gerenciamento de Tarefas',
+    status: 'MAINTENANCE',
+    access: 'RESTRICTED',
+    description: 'Sistema de Gestão Imobiliária e Portfólio de Imóveis',
+    comingSoon: true,
   },
 ]
-

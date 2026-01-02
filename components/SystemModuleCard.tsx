@@ -86,6 +86,15 @@ export default function SystemModuleCard({ module, index }: SystemModuleCardProp
             </div>
           )}
 
+          {/* Faixa EM BREVE - EM DESENVOLVIMENTO */}
+          {module.comingSoon && (
+            <div className="mt-4 -mx-6 px-4 py-3 bg-white text-center">
+              <div className="font-mono text-sm font-bold text-gray-800 tracking-wide">
+                EM BREVE - EM DESENVOLVIMENTO
+              </div>
+            </div>
+          )}
+
           {projectDetails && (
             <div className="pt-4 border-t border-matrix-cyan/20 space-y-2.5 mt-auto">
               <motion.button
