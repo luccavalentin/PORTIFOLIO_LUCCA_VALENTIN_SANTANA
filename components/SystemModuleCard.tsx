@@ -66,18 +66,30 @@ export default function SystemModuleCard({ module, index }: SystemModuleCardProp
           <div className="grid grid-cols-2 gap-3 text-center">
             <div>
               <div className="text-matrix-cyan/60 font-mono text-xs mb-1">TIPO</div>
-              <div className="text-matrix-cyan/80 font-mono text-sm">{module.type}</div>
+              <div className="text-matrix-cyan/80 font-mono text-sm">{module.type.replace('SaaS ', '')}</div>
             </div>
 
             <div>
               <div className="text-matrix-cyan/60 font-mono text-xs mb-1">STATUS</div>
-              <div className={`font-mono text-sm ${statusColor}`}>{module.status}</div>
+              <div className={`font-mono text-sm ${statusColor}`}>
+                {module.status === 'MAINTENANCE'
+                  ? 'MANUTENÇÃO E DESENVOLVIMENTO'
+                  : module.status === 'ONLINE'
+                    ? 'ONLINE'
+                    : 'OFFLINE'}
+              </div>
             </div>
           </div>
 
           <div className="text-center">
             <div className="text-matrix-cyan/60 font-mono text-xs mb-1">ACESSO</div>
-            <div className="text-matrix-cyan/80 font-mono text-sm">{module.access}</div>
+            <div className="text-matrix-cyan/80 font-mono text-sm uppercase">
+              {module.access === 'PREVIEW'
+                ? 'VISUALIZAÇÃO'
+                : module.access === 'RESTRICTED'
+                  ? 'RESTRITO'
+                  : 'DEMONSTRAÇÃO'}
+            </div>
           </div>
 
           {module.description && (
