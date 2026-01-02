@@ -33,7 +33,7 @@ export default function SystemModules() {
             MÓDULOS DO SISTEMA
           </h2>
           <div className="text-matrix-cyan/60 font-mono text-sm">
-            > sistemas disponíveis para visualização
+            {'>'} sistemas disponíveis para visualização
           </div>
         </motion.div>
 
