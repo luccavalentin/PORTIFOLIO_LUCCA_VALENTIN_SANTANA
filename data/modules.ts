@@ -9,12 +9,28 @@ export interface SystemModule {
 
 export const systemModules: SystemModule[] = [
   {
-    id: 'erp-core',
-    name: 'ERP_CORE',
+    id: 'gestao-pro-plus',
+    name: 'GESTÃO PRO +',
+    type: 'SaaS ERP',
+    status: 'ONLINE',
+    access: 'PREVIEW',
+    description: 'Sistema SaaS Multi-Tenant completo com Dashboard, PDV, Caixa, Estoque, Financeiro e Relatórios',
+  },
+  {
+    id: 'law-office',
+    name: 'GESTÃO ESCRITÓRIO ADVOCACIA',
     type: 'SaaS DEMO',
     status: 'ONLINE',
     access: 'PREVIEW',
-    description: 'Sistema de Planejamento de Recursos Empresariais',
+    description: 'Sistema completo de gestão para escritórios de advocacia com funcionamento offline',
+  },
+  {
+    id: 'segurabolso',
+    name: 'SEGURABOLSO',
+    type: 'SaaS DEMO',
+    status: 'ONLINE',
+    access: 'PREVIEW',
+    description: 'Sistema completo de gestão financeira pessoal para controle total das finanças',
   },
   {
     id: 'clinic-odonto',
@@ -47,14 +63,6 @@ export const systemModules: SystemModule[] = [
     status: 'ONLINE',
     access: 'PREVIEW',
     description: 'Sistema Avançado de Gerenciamento de Tarefas',
-  },
-  {
-    id: 'law-office',
-    name: 'LAW_OFFICE',
-    type: 'SaaS DEMO',
-    status: 'ONLINE',
-    access: 'PREVIEW',
-    description: 'Plataforma de Gestão para Escritórios de Advocacia',
   },
 ]
 

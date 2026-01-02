@@ -5,9 +5,11 @@ import MatrixRain from '@/components/MatrixRain'
 import HeroTerminal from '@/components/HeroTerminal'
 import AccessOverlay from '@/components/AccessOverlay'
 import SystemModules from '@/components/SystemModules'
+import InfoModal from '@/components/InfoModal'
 
 export default function Home() {
   const [showAccessOverlay, setShowAccessOverlay] = useState(false)
+  const [showInfoModal, setShowInfoModal] = useState(false)
 
   const handleViewModules = () => {
     setShowAccessOverlay(true)
@@ -24,8 +26,7 @@ export default function Home() {
   }
 
   const handleAccessInfo = () => {
-    // Placeholder para futura implementação
-    console.log('Access Info clicked')
+    setShowInfoModal(true)
   }
 
   return (
@@ -34,6 +35,7 @@ export default function Home() {
       <HeroTerminal onViewModules={handleViewModules} onAccessInfo={handleAccessInfo} />
       <SystemModules />
       <AccessOverlay isVisible={showAccessOverlay} onComplete={handleAccessComplete} />
+      <InfoModal isVisible={showInfoModal} onClose={() => setShowInfoModal(false)} />
     </main>
   )
 }
