@@ -33,6 +33,14 @@ export const systemModules: SystemModule[] = [
     description: 'Sistema completo de gestão financeira pessoal para controle total das finanças',
   },
   {
+    id: 'atlas-finance',
+    name: 'ATLAS FINANCE',
+    type: 'SaaS DEMO',
+    status: 'ONLINE',
+    access: 'PREVIEW',
+    description: 'Sistema completo de gestão financeira empresarial e pessoal com investimentos e calculadoras',
+  },
+  {
     id: 'clinic-odonto',
     name: 'CLINIC_ODONTO',
     type: 'SaaS DEMO',

@@ -69,6 +69,14 @@ const getModuleIcon = (moduleName: string) => {
     'Agenda Financeira': Calendar,
     'Relatórios e Análises': PieChart,
     'Produtividade': BookOpen,
+    // Atlas Finance
+    'Finanças Empresariais (PJ)': Building2,
+    'Finanças Pessoais (PF)': Wallet,
+    'Investimentos PJ': TrendingUp,
+    'Investimentos PF': PieChart,
+    'Calculadoras Financeiras': DollarSign,
+    'Relatórios Executivos': BarChart3,
+    'Gestão de Tarefas': CheckSquare,
   }
 
   // Ícones comuns que aparecem em múltiplos sistemas
@@ -166,7 +174,9 @@ export default function ProjectDetailsModal({
                         ? 'GESTÃO ESCRITÓRIO ADVOCACIA'
                         : project.id === 'segurabolso'
                           ? 'SEGURABOLSO'
-                          : project.id.toUpperCase()}
+                          : project.id === 'atlas-finance'
+                            ? 'ATLAS FINANCE'
+                            : project.id.toUpperCase()}
                   </h2>
                   <div className="text-matrix-cyan/70 font-mono text-base">
                     {project.id === 'gestao-pro-plus' ? 'SaaS ERP' : 'SaaS DEMO'}

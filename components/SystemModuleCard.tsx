@@ -7,6 +7,7 @@ import ProjectDetailsModal from './ProjectDetailsModal'
 import { gestaoProPlusDetails } from '@/data/projectDetails'
 import { lawOfficeDetails } from '@/data/lawOfficeDetails'
 import { segurabolsoDetails } from '@/data/segurabolsoDetails'
+import { atlasFinanceDetails } from '@/data/atlasFinanceDetails'
 import { Code, Info, Play } from 'lucide-react'
 
 interface SystemModuleCardProps {
@@ -21,17 +22,19 @@ export default function SystemModuleCard({ module, index }: SystemModuleCardProp
     module.status === 'ONLINE'
       ? 'text-matrix-cyan'
       : module.status === 'OFFLINE'
-      ? 'text-red-500'
-      : 'text-yellow-500'
+        ? 'text-red-500'
+        : 'text-yellow-500'
 
   const projectDetails =
     module.id === 'gestao-pro-plus'
       ? gestaoProPlusDetails
       : module.id === 'law-office'
-      ? lawOfficeDetails
-      : module.id === 'segurabolso'
-      ? segurabolsoDetails
-      : null
+        ? lawOfficeDetails
+        : module.id === 'segurabolso'
+          ? segurabolsoDetails
+          : module.id === 'atlas-finance'
+            ? atlasFinanceDetails
+            : null
 
   const handleButtonClick = (tab: 'stacks' | 'system' | 'demo') => {
     setInitialTab(tab)
